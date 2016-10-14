@@ -1,0 +1,16 @@
+/* Empty. Add your own CSS if you like */
+img{
+  border-radius: 50%;
+  width: 100%;
+}
+
+#contentHome{
+  background-image: url(http://qollom.com/wp-content/uploads/2014/11/bokeh-lights-sunset-city-blur-hd-wallpaper1.jpg);
+  background-repeat: no-repeat;
+  background-size: 400%;
+}
+
+h2{
+  text-align: center;
+  font-family: Verdana;
+}
