@@ -1,0 +1,38 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Register</h1>
+    <div class="buttons">
+      <button ng-click="closeRegister()" class="button button-icon icon ion-ios-close-empty"></button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form ng-submit="doRegister()">
+      <div class="list">
+        <label class="item item-input item-floating-label">
+          <span class="input-label"><i class="icon ion-person"></i> Username</span>
+          <input type="text" placeholder="Username" ng-model="loginData.username">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label"><i class="icon ion-person"></i> First name</span>
+          <input type="text" placeholder="First name" ng-model="loginData.firstName">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label"><i class="icon ion-person"></i> Last name</span>
+          <input type="text" placeholder="Last name" ng-model="loginData.lastName">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label"><i class="icon ion-at"></i> Email</span>
+          <input type="email" placeholder="Email" ng-model="loginData.email">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label"><i class="icon ion-key"></i> Password</span>
+          <input type="password" placeholder="Password" ng-model="loginData.password">
+        </label>
+        <label class="item">
+          <button class="button button-block button-positive" type="submit">Sign in</button>
+        </label>
+      </div>
+      <div ng-show="errorLogin"><h3 class="assertive" style="text-align:center;"><i class="icon ion-heart-broken"></i> Identifians erronés !</h3></div>
+    </form>
+  </ion-content>
+</ion-modal-view>
