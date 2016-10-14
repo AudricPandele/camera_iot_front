@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.AppCtrl', 'starter.HomeCtrl', 'starter.CurrentUserCtrl', 'starter.WelcomeCtrl', 'starter.sessionSrv'])
+angular.module('starter', ['ionic', 'starter.AppCtrl', 'starter.HomeCtrl', 'starter.CurrentUserCtrl', 'starter.WelcomeCtrl', 'starter.sessionSrv', 'starter.DeviceCtrl'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -51,7 +51,8 @@ angular.module('starter', ['ionic', 'starter.AppCtrl', 'starter.HomeCtrl', 'star
       url: '/device',
       views: {
         'menuContent': {
-          templateUrl: 'templates/device.html'
+          templateUrl: 'templates/device.html',
+          controller: 'DeviceCtrl'
         }
       }
     })
@@ -62,6 +63,15 @@ angular.module('starter', ['ionic', 'starter.AppCtrl', 'starter.HomeCtrl', 'star
         'menuContent': {
           templateUrl: 'templates/home.html',
           controller: 'HomeCtrl'
+        }
+      }
+    })
+  .state('app.addDevice', {
+      url: '/add/device',
+      views: {
+          'menuContent': {
+          templateUrl: 'templates/addDevice.html',
+          controller: 'DeviceCtrl'
         }
       }
     })
