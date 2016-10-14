@@ -41,11 +41,11 @@ angular.module('starter', ['ionic', 'starter.AppCtrl', 'starter.HomeCtrl', 'star
     }
   })
 
-  .state('app.browse', {
-      url: '/browse',
+  .state('app.device', {
+      url: '/device',
       views: {
         'menuContent': {
-          templateUrl: 'templates/browse.html'
+          templateUrl: 'templates/device.html'
         }
       }
     })

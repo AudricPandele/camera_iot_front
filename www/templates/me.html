@@ -1,6 +1,22 @@
 <ion-view view-title="Me">
   <ion-content>
-    <h1>{{ userSession.user.firstName }} {{ userSession.user.lastName }}</h1>
-    <h3>{{ userSession.user.email }}</h3>
+    <div class="list">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Fisrtname</span>
+        <input type="text" placeholder="{{ userSession.user.firstName }}">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Lastname</span>
+        <input type="text" placeholder="{{ userSession.user.lastName }}">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Username</span>
+        <input type="text" placeholder="{{ userSession.user.username }}">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Email</span>
+        <input type="text" placeholder="{{ userSession.user.email }}">
+      </label>
+    </div>
   </ion-content>
 </ion-view>
