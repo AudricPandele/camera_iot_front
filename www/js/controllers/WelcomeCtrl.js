@@ -1,14 +1,13 @@
 var app = angular.module('starter.WelcomeCtrl', []);
 
-app.controller('WelcomeCtrl', function($scope, $ionicModal, $timeout, $http, $session, $state, $ionicHistory) {
-  $ionicHistory.clearHistory();
-  $scope.errorLogin = false;
+app.controller('WelcomeCtrl', function($scope, $ionicModal, $timeout, $http, $session, $state, $ionicHistory, $ionicPopup, $timeout) {
+  //$ionicHistory.clearHistory();
 
   // Form data for the login modal
   $scope.loginData = {};
 
   $ionicHistory.nextViewOptions({
-    disableBack: true
+    disableBack: false
   })
 
   // Create the login modal that we will use later
@@ -56,11 +55,17 @@ app.controller('WelcomeCtrl', function($scope, $ionicModal, $timeout, $http, $se
       }
     }).then(function successCallback(response) {
       if (response.data == null) {
-        $scope.errorLogin = true;
+        //$scope.errorLogin = true;
+        var alertPopup = $ionicPopup.alert({
+          title: 'Try again !',
+          template: 'Bad identifiers !'
+        });
+
+        alertPopup.then(function(res) {
+        });
       }else{
         $session.put('token', response.data.token);
         $session.put('id_session', response.data.user.id);
-        $scope.errorLogin = false;
         $scope.closeLogin();
         $session.setUser(response.data.user.id);
         $state.go('app.home');
@@ -84,21 +89,14 @@ app.controller('WelcomeCtrl', function($scope, $ionicModal, $timeout, $http, $se
       }
     }).then(function successCallback(response) {
       if (response.data == null) {
-        $scope.errorLogin = true;
+        console.log("error");
       }else{
         $scope.closeRegister();
         $scope.login();
-
-
-        // $session.put('token', response.data.token);
-        // $session.put('id_session', response.data.user.id);
-        // $scope.errorLogin = false;
-        // $scope.closeLogin();
-        // $session.setUser(response.data.user.id);
-        // $state.go('app.single', {id: response.data.user.id}, {reload: true});
       }
 
     }, function errorCallback(response) {
     });
   };
+
 });

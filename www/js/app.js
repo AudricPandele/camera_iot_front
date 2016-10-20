@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.AppCtrl', 'starter.HomeCtrl', 'starter.CurrentUserCtrl', 'starter.WelcomeCtrl', 'starter.sessionSrv', 'starter.DeviceCtrl'])
+angular.module('starter', ['ionic', 'starter.MenuCtrl', 'starter.HomeCtrl', 'starter.CurrentUserCtrl', 'starter.WelcomeCtrl', 'starter.sessionSrv', 'starter.DeviceCtrl', 'starter.AddDeviceCtrl'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -35,7 +35,7 @@ angular.module('starter', ['ionic', 'starter.AppCtrl', 'starter.HomeCtrl', 'star
     url: '/app',
     abstract: true,
     templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl'
+    controller: 'MenuCtrl'
   })
 
   .state('app.search', {
@@ -71,7 +71,7 @@ angular.module('starter', ['ionic', 'starter.AppCtrl', 'starter.HomeCtrl', 'star
       views: {
           'menuContent': {
           templateUrl: 'templates/addDevice.html',
-          controller: 'DeviceCtrl'
+          controller: 'AddDeviceCtrl'
         }
       }
     })

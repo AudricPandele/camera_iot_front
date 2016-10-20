@@ -1,23 +1,20 @@
-<ion-modal-view>
-  <ion-header-bar>
-    <h1 class="title">Ajouter une camera</h1>
-  </ion-header-bar>
+<ion-view view-title="Add device">
   <ion-content>
     <form ng-submit="addDevice()">
       <div class="list">
         <label class="item item-input item-floating-label">
-          <span class="input-label"><i class="icon ion-person"></i>Identifiant de la caméra</span>
-          <input type="text" placeholder="ID camera" ng-model="addCamera.id">
+          <span class="input-label">Camera ID</span>
+          <input type="text" placeholder="Camera ID" ng-model="addCamera.id">
         </label>
         <label class="item item-input item-floating-label">
-          <span class="input-label"><i class="icon ion-person"></i>Modèle de la caméra</span>
-          <input type="text" placeholder="Modele camera" ng-model="addCamera.modele">
+          <span class="input-label">Camera model</span>
+          <input type="text" placeholder="Camera model" ng-model="addCamera.modele">
         </label>
-        <label class="item">
-          <button class="button button-block button-positive" type="submit">Ajouter</button>
-        </label>
+        <div class="col col-33 col-offset-33">
+          <button class="button button-block icon-center ion-plus button-outline button-balanced" type="submit"></button>
+        </div>
       </div>
       <div ng-show="errorLogin"><h3 class="assertive" style="text-align:center;"><i class="icon ion-heart-broken"></i> Identifians erronés !</h3></div>
     </form>
   </ion-content>
-</ion-modal-view>
+</ion-view>

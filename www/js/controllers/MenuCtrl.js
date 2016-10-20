@@ -1,9 +1,9 @@
-var app = angular.module('starter.AppCtrl', []);
+var app = angular.module('starter.MenuCtrl', []);
 
-app.controller('AppCtrl', function($scope, $ionicModal, $timeout, $http, $session, $state, $ionicHistory) {
-  
+app.controller('MenuCtrl', function($scope, $ionicModal, $timeout, $http, $session, $state, $ionicHistory) {
+
   $ionicHistory.nextViewOptions({
-    disableBack: true
+    disableBack: false
   })
 
   $scope.user_id = $session.get('id_session');

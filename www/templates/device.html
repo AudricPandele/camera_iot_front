@@ -1,14 +1,19 @@
 <ion-view view-title="Devices">
   <ion-content>
-    <div class="list">
-      <a class="item item-icon-left" href="#/app/add/device">
-        <i class="icon ion-videocamera"></i>
-        Ajouter une camera
+    <div class="col col-33 col-offset-33">
+      <a href="#/app/add/device" class="button-block button button-outline button-positive">
+        Add device
       </a>
-      <a ng-repeat="device in devices" class="item item-icon-left" href="#">
+    </div>
+
+    <ion-list can-swipe="listCanSwipe"cshow-delete="shouldShowDelete" show-reorder="shouldShowReorder">
+      <ion-item ng-repeat="device in devices">
         <i class="icon ion-videocamera"></i>
         {{device.id}} - {{device.modele}}
-      </a>
-      </div>
+        <ion-option-button class="button-assertive" ng-click="deleteDevice(device.id)">
+          Delete
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
   </ion-content>
 </ion-view>
