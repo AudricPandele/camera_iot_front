@@ -1,22 +1,29 @@
 angular.module('starter.AddDeviceCtrl', [])
 
-.controller('AddDeviceCtrl', function($scope, $stateParams, $http, $session, $state, $ionicHistory) {
-  // $ionicHistory.clearHistory();
-
+.controller('AddDeviceCtrl', function($scope, $stateParams, $http, $session, $state) {
   $scope.user_id = $session.get('id_session');
   $scope.userSession = $session;
+  $scope.addCamera = {
+    id: '',
+    modele: ''
+  }
 
-  $scope.deleteDevice = function(id) {
+  $scope.addDevice = function() {
     $http({
-      method: 'DELETE',
-      url: 'http://localhost:1337/camera/'+id,
+      method: 'POST',
+      url: 'http://localhost:1337/camera',
+      data: {
+        identifier: $scope.addCamera.id,
+        modele: $scope.addCamera.modele
+      },
       headers: {
         Authorization: 'JWT '+$session.get('token')
       }
     }).then(function successCallback(response) {
       if (response.data == null) {
-        console.log("pas cool");
+        $scope.errorLogin = true;
       }else{
+        console.log('camera added');
         $state.go('app.device', {}, {reload: true});
       }
 
