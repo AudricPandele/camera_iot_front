@@ -9,7 +9,7 @@
     <ion-list can-swipe="listCanSwipe"cshow-delete="shouldShowDelete" show-reorder="shouldShowReorder">
       <ion-item ng-repeat="device in devices">
         <i class="icon ion-videocamera"></i>
-        {{device.id}} - {{device.modele}}
+        {{device.identifier}} - {{device.modele}}
         <ion-option-button class="button-assertive" ng-click="deleteDevice(device.id)">
           Delete
         </ion-option-button>

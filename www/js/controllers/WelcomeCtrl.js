@@ -67,7 +67,7 @@ app.controller('WelcomeCtrl', function($scope, $ionicModal, $timeout, $http, $se
         $session.put('token', response.data.token);
         $session.put('id_session', response.data.user.id);
         $scope.closeLogin();
-        $session.setUser(response.data.user.id);
+        $session.init();
         $state.go('app.home');
       }
 
