@@ -11,7 +11,7 @@ angular.module('starter.AddDeviceCtrl', [])
   $scope.addDevice = function() {
     $http({
       method: 'POST',
-      url: 'http://localhost:1337/camera',
+      url: 'http://http://auudrc.hopto.org/:1337/camera',
       data: {
         identifier: $scope.addCamera.id,
         modele: $scope.addCamera.modele

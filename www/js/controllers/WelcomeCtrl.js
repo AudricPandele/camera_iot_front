@@ -48,7 +48,7 @@ app.controller('WelcomeCtrl', function($scope, $ionicModal, $timeout, $http, $se
   $scope.doLogin = function() {
     $http({
       method: 'POST',
-      url: 'http://localhost:1337/auth/signin',
+      url: 'http://http://auudrc.hopto.org/:1337/auth/signin',
       data: {
         identifier: $scope.loginData.username,
         password: $scope.loginData.password
@@ -79,7 +79,7 @@ app.controller('WelcomeCtrl', function($scope, $ionicModal, $timeout, $http, $se
   $scope.doRegister = function() {
     $http({
       method: 'POST',
-      url: 'http://localhost:1337/auth/signup',
+      url: 'http://http://auudrc.hopto.org/:1337/auth/signup',
       data: {
         username: $scope.loginData.username,
         firstName: $scope.loginData.firstName,

@@ -11,7 +11,7 @@ angular.module('starter.DeviceCtrl', [])
   $scope.getDevices = function() {
     $http({
       method: 'GET',
-      url: 'http://localhost:1337/camera',
+      url: 'http://http://auudrc.hopto.org/:1337/camera',
       data: {},
       headers: {
         Authorization: 'JWT '+$session.get('token')
@@ -28,7 +28,7 @@ angular.module('starter.DeviceCtrl', [])
   $scope.deleteDevice = function(id) {
     $http({
       method: 'DELETE',
-      url: 'http://localhost:1337/camera/'+id,
+      url: 'http://http://auudrc.hopto.org/:1337/camera/'+id,
       headers: {
         Authorization: 'JWT '+$session.get('token')
       }
