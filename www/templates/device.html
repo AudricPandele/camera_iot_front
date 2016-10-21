@@ -5,8 +5,11 @@
         Add device
       </a>
     </div>
-
-    <ion-list can-swipe="listCanSwipe"cshow-delete="shouldShowDelete" show-reorder="shouldShowReorder">
+    <ion-refresher
+            pulling-text="Pull to refresh..."
+            on-refresh="doRefresh()">
+    </ion-refresher>
+    <ion-list can-swipe="listCanSwipe" on-pulling="doRefresh()" cshow-delete="shouldShowDelete" show-reorder="shouldShowReorder">
       <ion-item ng-repeat="device in devices">
         <i class="icon ion-videocamera"></i>
         {{device.identifier}} - {{device.modele}}

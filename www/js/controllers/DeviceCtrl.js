@@ -42,4 +42,10 @@ angular.module('starter.DeviceCtrl', [])
     }, function errorCallback(response) {
     });
   };
+
+  $scope.doRefresh = function() {
+    console.log('lyka');
+    $state.go('app.device', {}, {reload: true});
+  };
+
 })
