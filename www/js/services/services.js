@@ -36,11 +36,7 @@ angular.module('starter.sessionSrv', [])
   this.setUser = function (id) {
     $http({
       method: 'GET',
-<<<<<<< HEAD
-      url: 'http://http://auudrc.hopto.org/:1337/user/'+id,
-=======
-      url: 'http://10.33.3.113:1337/user/'+id,
->>>>>>> 3d0b7c0d50558368b04b855a5a170d65bfc77a62
+      url: 'http://auudrc.hopto.org:1337/user/'+id,
       headers: {
         'Authorization': "JWT "+this.get('token')
       }
