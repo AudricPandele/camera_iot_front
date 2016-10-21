@@ -11,7 +11,11 @@ angular.module('starter.DeviceCtrl', [])
   $scope.getDevices = function() {
     $http({
       method: 'GET',
+<<<<<<< HEAD
       url: 'http://http://auudrc.hopto.org/:1337/camera',
+=======
+      url: 'http://10.33.3.113:1337/camera',
+>>>>>>> 3d0b7c0d50558368b04b855a5a170d65bfc77a62
       data: {},
       headers: {
         Authorization: 'JWT '+$session.get('token')
@@ -28,7 +32,11 @@ angular.module('starter.DeviceCtrl', [])
   $scope.deleteDevice = function(id) {
     $http({
       method: 'DELETE',
+<<<<<<< HEAD
       url: 'http://http://auudrc.hopto.org/:1337/camera/'+id,
+=======
+      url: 'http://10.33.3.113:1337/camera/'+id,
+>>>>>>> 3d0b7c0d50558368b04b855a5a170d65bfc77a62
       headers: {
         Authorization: 'JWT '+$session.get('token')
       }
@@ -44,8 +52,13 @@ angular.module('starter.DeviceCtrl', [])
   };
 
   $scope.doRefresh = function() {
-    console.log('lyka');
-    $state.go('app.device', {}, {reload: true});
-  };
-
+      $http.get('/#/app/device')
+          .success(function() {
+            $state.go('app.device', {}, {reload: true});
+          })
+          .finally(function() {
+            // Stop the ion-refresher from spinning
+            $scope.$broadcast('scroll.refreshComplete');
+          });
+    };
 })
