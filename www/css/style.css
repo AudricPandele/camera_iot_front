@@ -14,3 +14,13 @@ h2{
   text-align: center;
   font-family: Verdana;
 }
+.login_content{
+  text-align: center;
+  margin-top: 10px;
+}
+.spinner-login svg {
+  width: 60px;
+  height: 60px;
+  stroke: #2980b9;
+  fill: #2980b9;
+}

@@ -2,6 +2,8 @@ var app = angular.module('starter.WelcomeCtrl', []);
 
 app.controller('WelcomeCtrl', function($scope, $ionicModal, $timeout, $http, $session, $state, $ionicHistory, $ionicPopup, $timeout) {
   //$ionicHistory.clearHistory();
+  $scope.loader = false;
+  $scope.log = true;
 
   // Form data for the login modal
   $scope.loginData = {};
@@ -46,6 +48,9 @@ app.controller('WelcomeCtrl', function($scope, $ionicModal, $timeout, $http, $se
 
   // Perform the login action when the user submits the login form
   $scope.doLogin = function() {
+    $scope.log = false;
+    $scope.loader = true;
+
     $http({
       method: 'POST',
       url: 'http://auudrc.hopto.org:1337/auth/signin',
@@ -66,6 +71,8 @@ app.controller('WelcomeCtrl', function($scope, $ionicModal, $timeout, $http, $se
       }else{
         $session.put('token', response.data.token);
         $session.put('id_session', response.data.user.id);
+        $scope.log = true;
+        $scope.loader = false;
         $scope.closeLogin();
         $session.init();
         $state.go('app.home');
@@ -77,6 +84,9 @@ app.controller('WelcomeCtrl', function($scope, $ionicModal, $timeout, $http, $se
 
   // Perform the login action when the user submits the login form
   $scope.doRegister = function() {
+    $scope.log = false;
+    $scope.loader = true;
+
     $http({
       method: 'POST',
       url: 'http://auudrc.hopto.org:1337/auth/signup',
@@ -91,6 +101,8 @@ app.controller('WelcomeCtrl', function($scope, $ionicModal, $timeout, $http, $se
       if (response.data == null) {
         console.log("error");
       }else{
+        $scope.log = true;
+        $scope.loader = false;
         $scope.closeRegister();
         $scope.login();
       }

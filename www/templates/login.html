@@ -16,8 +16,9 @@
           <span class="input-label"><i class="icon ion-key"></i> Password</span>
           <input type="password" placeholder="Password" ng-model="loginData.password">
         </label>
-        <div class="col col-33 col-offset-33">
-          <button class="button button-outline button-block button-positive" type="submit">Log in</button>
+        <div class="login_content col col-33 col-offset-33">
+          <button ng-show="log" class="button button-outline button-block button-positive" type="submit">Log in</button>
+          <ion-spinner ng-show="loader" class="spinner-login spinner" icon="ripple"></ion-spinner>
         </div>
       </div>
     </form>
