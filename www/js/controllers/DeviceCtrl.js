@@ -1,6 +1,7 @@
 angular.module('starter.DeviceCtrl', [])
 
-.controller('DeviceCtrl', function($scope, $stateParams, $http, $session, $state, $ionicHistory) {
+.controller('DeviceCtrl', function($scope, $stateParams, $http, $session, $state, $ionicHistory, socket) {
+
   $scope.listCanSwipe = true;
   $scope.shouldShowDelete = false;
   $scope.shouldShowReorder = false;
@@ -9,23 +10,18 @@ angular.module('starter.DeviceCtrl', [])
   $scope.userSession = $session;
 
   $scope.getDevices = function() {
-    $http({
-      method: 'GET',
-      url: 'http://auudrc.hopto.org:1337/camera',
-      data: {},
-      headers: {
-        Authorization: 'JWT '+$session.get('token')
-      }
-    }).then(function successCallback(response) {
-      $scope.devices = response.data;
+    socket.getSocket().on('camera', function(data) {
+      $scope.doRefresh();
+    })
 
-      }, function errorCallback(response) {
-    });
+    socket.getCameras().then(function(data) {
+      $scope.devices = data;
+    })
   };
+
   $scope.getDevices();
 
-
-  $scope.deleteDevice = function(id) {
+  $scope.deleteDevice = function(id, index) {
     $http({
       method: 'DELETE',
       url: 'http://auudrc.hopto.org:1337/camera/'+id,
@@ -36,7 +32,8 @@ angular.module('starter.DeviceCtrl', [])
       if (response.data == null) {
         console.log("pas cool");
       }else{
-        $state.go('app.device', {}, {reload: true});
+        //$scope.devices[]
+        //$state.go('app.device', {}, {reload: true});
       }
 
     }, function errorCallback(response) {
@@ -44,13 +41,12 @@ angular.module('starter.DeviceCtrl', [])
   };
 
   $scope.doRefresh = function() {
-      $http.get('/#/app/device')
-          .success(function() {
-            $state.go('app.device', {}, {reload: true});
-          })
-          .finally(function() {
-            // Stop the ion-refresher from spinning
-            $scope.$broadcast('scroll.refreshComplete');
-          });
+      $scope.devices = [];
+
+      socket.getCameras().then(function(data) {
+
+        $scope.devices = data;
+        $scope.$broadcast('scroll.refreshComplete');
+      })
     };
 })

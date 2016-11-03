@@ -11,7 +11,7 @@
       <ion-item ng-repeat="device in devices">
         <i class="icon ion-videocamera"></i>
         {{device.identifier}} - {{device.modele}}
-        <ion-option-button class="button-assertive" ng-click="deleteDevice(device.id)">
+        <ion-option-button class="button-assertive" ng-click="deleteDevice(device.id, $index)">
           Delete
         </ion-option-button>
       </ion-item>

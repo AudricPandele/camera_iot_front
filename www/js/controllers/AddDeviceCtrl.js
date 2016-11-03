@@ -1,6 +1,6 @@
 angular.module('starter.AddDeviceCtrl', [])
 
-.controller('AddDeviceCtrl', function($scope, $stateParams, $http, $session, $state) {
+.controller('AddDeviceCtrl', function($scope, $stateParams, $http, $session, $state, socket) {
   $scope.user_id = $session.get('id_session');
   $scope.userSession = $session;
   $scope.addCamera = {
@@ -23,7 +23,6 @@ angular.module('starter.AddDeviceCtrl', [])
       if (response.data == null) {
         $scope.errorLogin = true;
       }else{
-        console.log('camera added');
         $state.go('app.device', {}, {reload: true});
       }
 
