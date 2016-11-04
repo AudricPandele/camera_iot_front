@@ -49,7 +49,6 @@ angular.module('starter.sessionSrv', [])
   }
 
   this.getUser = function () {
-
     return this.user;
   }
 });

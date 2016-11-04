@@ -1,0 +1,16 @@
+<ion-view view-title="My Device">
+  <ion-content>
+    <div class="row-align-center">
+      <h4 class="text-center">{{camera.identifier}} - {{camera.modele}}</h4>
+      <h5 class="text-center">{{camera.position}}</h5>
+      <div class="row">
+        <div class="col col-50 text-center">
+          <button class="button button-icon icon ion-chevron-left" ng-click="moveLeft()"></button>
+        </div>
+        <div class="col col-50 text-center">
+          <button class="button button-icon icon ion-chevron-right" ng-click="moveRight()"></button>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

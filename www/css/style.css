@@ -24,3 +24,12 @@ h2{
   stroke: #2980b9;
   fill: #2980b9;
 }
+.row-align-center{
+  margin-top: 30%;
+}
+.text-center{
+  text-align: center;
+}
+.arrow{
+  font-size: 3em;
+}

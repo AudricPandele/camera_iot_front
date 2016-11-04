@@ -22,4 +22,19 @@ angular.module('starter.socketSrv', [])
     });
     return deferred.promise
   }
+
+  this.getCamera = function (id) {
+    socket.request({
+      url: 'http://auudrc.hopto.org:1337/camera/'+id,
+      headers: {
+        Authorization: 'JWT '+$session.get('token')
+      },
+      method: 'GET'
+    },
+    function(response) {
+      deferred.resolve(response);
+      deferred = $q.defer();
+    });
+    return deferred.promise
+  }
 })

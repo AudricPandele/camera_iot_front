@@ -38,6 +38,17 @@ angular.module('starter.routes', [])
       auth:true
     })
 
+  .state('app.deviceDetail', {
+      url: '/device/:id',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/deviceDetail.html',
+          controller: 'DeviceDetailCtrl'
+        }
+      },
+      auth:true
+    })
+
   .state('app.home', {
       url: '/home',
       views: {
