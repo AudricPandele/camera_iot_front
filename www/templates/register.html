@@ -28,6 +28,18 @@
           <span class="input-label"><i class="icon ion-key"></i> Password</span>
           <input type="password" placeholder="Password" ng-model="loginData.password">
         </label>
+
+        <div class="list">
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Group
+            </div>
+            <select ng-model="loginData.group">
+              <option ng-repeat="group in groups track by $index" value="{{group.id}}">{{group.groupName}}</option>
+            </select>
+          </label>
+        </div>
+
         <div class="login_content col col-33 col-offset-33">
           <button class="button button-outline button-block button-balanced" type="submit">Sign in</button>
           <ion-spinner ng-show="loader" class="spinner spinner-login" icon="ripple"></ion-spinner>
@@ -35,5 +47,6 @@
       </div>
       <div ng-show="errorLogin"><h3 class="assertive" style="text-align:center;"><i class="icon ion-heart-broken"></i> Identifians erronés !</h3></div>
     </form>
+
   </ion-content>
 </ion-modal-view>

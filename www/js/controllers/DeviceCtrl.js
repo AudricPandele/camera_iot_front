@@ -5,7 +5,6 @@ angular.module('starter.DeviceCtrl', [])
   $scope.listCanSwipe = true;
   $scope.shouldShowDelete = false;
   $scope.shouldShowReorder = false;
-  // $ionicHistory.clearHistory();
   $scope.user_id = $session.get('id_session');
   $scope.userSession = $session;
 

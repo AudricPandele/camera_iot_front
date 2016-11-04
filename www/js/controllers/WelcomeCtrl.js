@@ -111,4 +111,22 @@ app.controller('WelcomeCtrl', function($scope, $ionicModal, $timeout, $http, $se
     });
   };
 
+  $scope.getGroups = function () {
+    $http({
+      method: 'GET',
+      url: 'http://auudrc.hopto.org:1337/group',
+    }).then(function successCallback(response) {
+      if (response.data == null) {
+        console.log("error");
+      }else{
+        $scope.log = true;
+        $scope.loader = false;
+        $scope.closeRegister();
+        $scope.login();
+      }
+
+    }, function errorCallback(response) {
+    });
+  }
+
 });
