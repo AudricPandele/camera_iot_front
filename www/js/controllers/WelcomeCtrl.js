@@ -67,6 +67,8 @@ app.controller('WelcomeCtrl', function($scope, $ionicModal, $timeout, $http, $se
         });
 
         alertPopup.then(function(res) {
+          $scope.loader = false;
+          $scope.log = true;
         });
       }else{
         $session.put('token', response.data.token);
