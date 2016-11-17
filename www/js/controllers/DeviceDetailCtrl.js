@@ -16,7 +16,7 @@ angular.module('starter.DeviceDetailCtrl', [])
   $scope.moveLeft = function () {
     $http({
       method: 'PUT',
-      url: 'http://auudrc.hopto.org:1337/camera/'+$scope.camera.id,
+      url: $session.server+'/camera/'+$scope.camera.id,
       headers: {
         Authorization: 'JWT '+$session.get('token')
       },
@@ -37,12 +37,33 @@ angular.module('starter.DeviceDetailCtrl', [])
   $scope.moveRight = function () {
     $http({
       method: 'PUT',
-      url: 'http://auudrc.hopto.org:1337/camera/'+$scope.camera.id,
+      url: $session.server+'/camera/'+$scope.camera.id,
       headers: {
         Authorization: 'JWT '+$session.get('token')
       },
       data: {
          position: $scope.camera.position+10,
+       }
+    }).then(function successCallback(response) {
+      if (response.data == null) {
+        console.log("pas cool");
+      }else{
+        console.log("ok");
+      }
+
+    }, function errorCallback(response) {
+    });
+  }
+
+  $scope.moveCenter = function () {
+    $http({
+      method: 'PUT',
+      url: $session.server+'/camera/'+$scope.camera.id,
+      headers: {
+        Authorization: 'JWT '+$session.get('token')
+      },
+      data: {
+         position: 90,
        }
     }).then(function successCallback(response) {
       if (response.data == null) {

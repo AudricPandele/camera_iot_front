@@ -1,12 +1,19 @@
 var app = angular.module('starter.WelcomeCtrl', []);
 
-app.controller('WelcomeCtrl', function($scope, $ionicModal, $timeout, $http, $session, $state, $ionicHistory, $ionicPopup, $timeout) {
+app.controller('WelcomeCtrl', function(socket, $scope, $ionicModal, $timeout, $http, $session, $state, $ionicHistory, $ionicPopup, $timeout) {
   //$ionicHistory.clearHistory();
   $scope.loader = false;
   $scope.log = true;
+  $scope.groups = {};
 
   // Form data for the login modal
   $scope.loginData = {};
+
+  $scope.getGroups = function() {
+    socket.getGroups().then(function(data) {
+      $scope.groups = data;
+    })
+  };
 
   $ionicHistory.nextViewOptions({
     disableBack: false
@@ -38,6 +45,8 @@ app.controller('WelcomeCtrl', function($scope, $ionicModal, $timeout, $http, $se
 
   // Open the register modal
   $scope.register = function() {
+    $scope.getGroups();
+    console.log($scope.groups);
     $scope.modalRegister.show();
   };
 
@@ -53,7 +62,7 @@ app.controller('WelcomeCtrl', function($scope, $ionicModal, $timeout, $http, $se
 
     $http({
       method: 'POST',
-      url: 'http://auudrc.hopto.org:1337/auth/signin',
+      url: $session.server+'/auth/signin',
       data: {
         identifier: $scope.loginData.username,
         password: $scope.loginData.password
@@ -91,13 +100,14 @@ app.controller('WelcomeCtrl', function($scope, $ionicModal, $timeout, $http, $se
 
     $http({
       method: 'POST',
-      url: 'http://auudrc.hopto.org:1337/auth/signup',
+      url: $session.server+'/auth/signup',
       data: {
         username: $scope.loginData.username,
         firstName: $scope.loginData.firstName,
         lastName: $scope.loginData.lastName,
         email: $scope.loginData.email,
-        password: $scope.loginData.password
+        password: $scope.loginData.password,
+        group: $scope.loginData.group
       }
     }).then(function successCallback(response) {
       if (response.data == null) {
@@ -112,23 +122,5 @@ app.controller('WelcomeCtrl', function($scope, $ionicModal, $timeout, $http, $se
     }, function errorCallback(response) {
     });
   };
-
-  $scope.getGroups = function () {
-    $http({
-      method: 'GET',
-      url: 'http://auudrc.hopto.org:1337/group',
-    }).then(function successCallback(response) {
-      if (response.data == null) {
-        console.log("error");
-      }else{
-        $scope.log = true;
-        $scope.loader = false;
-        $scope.closeRegister();
-        $scope.login();
-      }
-
-    }, function errorCallback(response) {
-    });
-  }
 
 });

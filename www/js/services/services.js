@@ -5,6 +5,8 @@ angular.module('starter.sessionSrv', [])
   this.token = null;
   this.test = "test";
 
+  this.server = "http://localhost:1337";
+
 
   this.get = function(key) {
       return localStorage.getItem(key);
@@ -36,7 +38,7 @@ angular.module('starter.sessionSrv', [])
   this.setUser = function (id) {
     $http({
       method: 'GET',
-      url: 'http://auudrc.hopto.org:1337/user/'+id,
+      url: this.server+'/user/'+id,
       headers: {
         'Authorization': "JWT "+this.get('token')
       }

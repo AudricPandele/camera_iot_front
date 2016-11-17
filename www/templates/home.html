@@ -1,7 +1,10 @@
 <ion-view view-title="Home">
   <ion-content>
     <div class="row">
-      <h2>Hi {{ userSession.user.firstName }} !</h2>
+      <h2>Hi {{ userSession.user.firstName }} {{ userSession.user.lastName }} !</h2>
+    </div>
+    <div class="row">
+      <h4>You're member of the {{ userSession.user.group.groupName }} group</h4>
     </div>
   </ion-content>
 </ion-view>

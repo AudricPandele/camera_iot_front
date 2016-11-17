@@ -23,7 +23,7 @@ angular.module('starter.DeviceCtrl', [])
   $scope.deleteDevice = function(id, index) {
     $http({
       method: 'DELETE',
-      url: 'http://auudrc.hopto.org:1337/camera/'+id,
+      url: $session.server+'/camera/'+id,
       headers: {
         Authorization: 'JWT '+$session.get('token')
       }

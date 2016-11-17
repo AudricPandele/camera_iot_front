@@ -4,10 +4,13 @@
       <h4 class="text-center">{{camera.identifier}} - {{camera.modele}}</h4>
       <h5 class="text-center">{{camera.position}}</h5>
       <div class="row">
-        <div class="col col-50 text-center">
+        <div class="col col-33 text-center">
           <button class="button button-icon icon ion-chevron-left" ng-click="moveLeft()"></button>
         </div>
-        <div class="col col-50 text-center">
+        <div class="col col-33 text-center">
+          <button class="button button-icon icon ion-ios-circle-filled" ng-click="moveCenter()"></button>
+        </div>
+        <div class="col col-33 text-center">
           <button class="button button-icon icon ion-chevron-right" ng-click="moveRight()"></button>
         </div>
       </div>
