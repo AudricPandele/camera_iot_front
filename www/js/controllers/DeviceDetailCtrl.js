@@ -1,6 +1,7 @@
 angular.module('starter.DeviceDetailCtrl', [])
 
 .controller('DeviceDetailCtrl', function($scope, $stateParams, socket, $session, $state, $http) {
+
   $scope.getDevice = function() {
     socket.getCamera($stateParams.id).then(function(data) {
       $scope.camera = data;
