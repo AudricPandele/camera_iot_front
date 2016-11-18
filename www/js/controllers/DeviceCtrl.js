@@ -14,11 +14,7 @@ angular.module('starter.DeviceCtrl', [])
     })
 
     socket.getCameras().then(function(data) {
-      $scope.devices = [];
-        for (var i=0; i<data.length;i++) {
-          if(data[i].group.id == $scope.userSession.user.group.id)
-            $scope.devices.push(data[i]);
-        }
+      $scope.devices = data;
     })
   };
 
