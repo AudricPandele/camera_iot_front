@@ -10,7 +10,7 @@ angular.module('starter.socketSrv', [])
 
   this.getCameras = function () {
     socket.request({
-      url: $session.server+'/camera',
+      url: $session.server+'/group/'+$session.user.group.id+'/cameras',
       headers: {
         Authorization: 'JWT '+$session.get('token')
       },

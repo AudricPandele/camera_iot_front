@@ -5,7 +5,7 @@ angular.module('starter.sessionSrv', [])
   this.token = null;
   this.test = "test";
 
-  this.server = "http://localhost:1337";
+  this.server = "http://auudrc.hopto.org:1337";
 
 
   this.get = function(key) {
